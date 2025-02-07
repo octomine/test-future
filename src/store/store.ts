@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { api } from "./api";
+import { api } from "./";
 
 export const store = configureStore({
   reducer: combineReducers({
