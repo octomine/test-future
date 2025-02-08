@@ -1,13 +1,9 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
+import { TestProvider } from '../../../utils'
 import { RepoCard } from '../RepoCard'
 import { TRepoCardProps } from '../RepoCard.types'
-import { IntlProvider } from 'react-intl'
-import { messages } from '../../../locale/messages'
-import { LOCALES } from '../../../locale/locales.ts'
-
-const locale = LOCALES.RUSSIAN
 
 const props: TRepoCardProps = {
   name: 'some repo name',
@@ -19,9 +15,9 @@ const props: TRepoCardProps = {
 
 test('should render successfully', () => {
   render(
-    <IntlProvider locale={locale} messages={messages[locale]}>
+    <TestProvider>
       <RepoCard {...props}></RepoCard>
-    </IntlProvider>
+    </TestProvider>
   )
 
   const nameElement = screen.getByText(/some repo name/i)
