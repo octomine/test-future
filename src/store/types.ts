@@ -3,6 +3,6 @@ export type TRepo = {
   name: string;
   description: string;
   html_url: string;
-  stargazers_count: string;
+  stargazers_count: number;
   updated_at: string;
 };
