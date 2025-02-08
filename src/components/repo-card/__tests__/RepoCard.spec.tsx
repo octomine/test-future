@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
-import { TestProvider } from '../../../utils'
+import { TestProvider } from '@/utils'
 import { RepoCard } from '../RepoCard'
 import { TRepoCardProps } from '../RepoCard.types'
 

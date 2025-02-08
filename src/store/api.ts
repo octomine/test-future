@@ -9,8 +9,9 @@ export const api = createApi({
     baseUrl,
   }),
   endpoints: (builder) => ({
-    getRepos: builder.query<TRepo[], string>({
-      query: (name: string) => `/users/${name}/repos`,
+    getRepos: builder.query<TRepo[], { name: string; page?: number }>({
+      query: ({ name, page = 1 }) =>
+        `/users/${name}/repos?per_page=20&page=${page}`,
     }),
   }),
 });

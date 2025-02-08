@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { TestProvider } from '@/utils'
 import { SearchInput } from '../SearchInput'
-import { TestProvider } from '../../../utils'
 
 const renderComponent = (value = '', setValue = () => { }) => render(
   <TestProvider>

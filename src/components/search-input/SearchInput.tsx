@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from "react";
-import { TSearchInputPops } from "./SearchInput.types";
 import { useIntl } from "react-intl";
+import { TSearchInputPops } from "./SearchInput.types";
 
 export const SearchInput: FC<TSearchInputPops> = ({ value, setValue }) => {
   const { formatMessage } = useIntl()
