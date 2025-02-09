@@ -4,29 +4,28 @@ import userEvent from '@testing-library/user-event'
 import { TestProvider } from '@/utils'
 import { SearchInput } from '../SearchInput'
 
-const renderComponent = (value = '', setValue = () => { }) => render(
+const renderComponent = () => render(
   <TestProvider>
-    <SearchInput value={value} setValue={setValue}></SearchInput>
+    <SearchInput></SearchInput>
   </TestProvider>
 )
 
 describe('should render successfully', () => {
-  test('should show label', () => {
-    renderComponent('value')
+  test('should show placeholder', () => {
+    renderComponent()
 
     const inputElement = screen.getByPlaceholderText(/Введите название репозитория/i)
-    expect(inputElement).toHaveValue('value')
+    expect(inputElement).toBeInTheDocument()
   })
 
-  test('should fire setValue on change', () => {
-    const setValue = jest.fn;
-    renderComponent('', setValue)
+  test('should show value on input', () => {
+    renderComponent()
 
     const inputElement = screen.getByPlaceholderText(/Введите название репозитория/i)
     userEvent.type(inputElement, 'a')
 
     waitFor(() => {
-      expect(setValue).toHaveBeenCalled()
+      expect(inputElement).toHaveValue('a')
     })
   })
 })

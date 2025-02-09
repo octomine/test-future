@@ -1,2 +1,3 @@
 export { store } from "./store";
-export { api } from "./api";
+export * from "./slices/repos";
+export * from "./thunks";

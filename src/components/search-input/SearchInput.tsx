@@ -1,16 +1,23 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { useIntl } from "react-intl";
-import { TSearchInputPops } from "./SearchInput.types";
+import { useAppDispatch } from "@/store/store";
+import { getRepos } from "@/store/thunks";
+import { setName } from "@/store/slices";
 
-export const SearchInput: FC<TSearchInputPops> = ({ value, setValue }) => {
+export const SearchInput: FC = () => {
   const { formatMessage } = useIntl()
+  const dispatch = useAppDispatch()
+  const [value, setValue] = useState('')
 
   const changeHandler = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
-    setValue(value);
+    setValue(value)
+    dispatch(setName(value))
+    dispatch(getRepos())
   }
 
   return <input
-    className={["text-3xl",
+    className={[
+      "text-3xl",
       "placeholder:text-slate-300",
       "px-2 py-1 m-2",
       "bg-gradient-to-b",
