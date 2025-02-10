@@ -1,16 +1,15 @@
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC } from "react";
 import { useIntl } from "react-intl";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { getRepos } from "@/store/thunks";
 import { setName } from "@/store/slices";
 
 export const SearchInput: FC = () => {
   const { formatMessage } = useIntl()
   const dispatch = useAppDispatch()
-  const [value, setValue] = useState('')
+  const value = useAppSelector(({ name }) => name)
 
   const changeHandler = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
-    setValue(value)
     dispatch(setName(value))
     dispatch(getRepos())
   }
