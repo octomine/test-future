@@ -1,14 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { repos, name, page, list } from "./slices";
+import { repos, params } from "./slices";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: combineReducers({
     repos,
-    name,
-    page,
-    list,
+    params,
   }),
 });
 

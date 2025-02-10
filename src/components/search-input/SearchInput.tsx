@@ -7,7 +7,7 @@ import { setName } from "@/store/slices";
 export const SearchInput: FC = () => {
   const { formatMessage } = useIntl()
   const dispatch = useAppDispatch()
-  const value = useAppSelector(({ name }) => name)
+  const value = useAppSelector(({ params }) => params.name)
 
   const changeHandler = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     dispatch(setName(value))

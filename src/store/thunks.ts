@@ -11,7 +11,9 @@ const createAppAsyncThunk = createAsyncThunk.withTypes<ThunkApiConfig>();
 export const getRepos = createAppAsyncThunk(
   "repos",
   (_, { dispatch, getState }) => {
-    const { name } = getState();
+    const {
+      params: { name },
+    } = getState();
     return fetch(`${BASE_URL}/users/${name}/repos?per_page=${PER_PAGE}&page=1`)
       .then((response) => response.json())
       .then((data) => {
@@ -23,7 +25,9 @@ export const getRepos = createAppAsyncThunk(
 export const getPage = createAppAsyncThunk(
   "repos",
   (_, { dispatch, getState }) => {
-    const { name, page } = getState();
+    const {
+      params: { name, page },
+    } = getState();
     return fetch(
       `${BASE_URL}/users/${name}/repos?per_page=${PER_PAGE}&page=${page}`
     )
