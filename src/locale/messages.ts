@@ -5,5 +5,6 @@ export const messages = {
     inputPlaceholder: "Введите название репозитория",
     lastUpdate: "Последнее обновление: ",
     loading: "Загружается...",
+    empty: "Ничего не найдено",
   },
 };
