@@ -1,8 +1,10 @@
 import '@testing-library/jest-dom'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { store } from '@/store'
 import { TestProvider } from '@/utils'
 import { SearchInput } from '../SearchInput'
+import { getRepos } from '@/store/thunks'
 
 const renderComponent = () => render(
   <TestProvider>
@@ -26,6 +28,17 @@ describe('should render successfully', () => {
 
     waitFor(() => {
       expect(inputElement).toHaveValue('a')
+    })
+  })
+
+  test('should dispatch getRepos on input', () => {
+    renderComponent()
+
+    const inputElement = screen.getByPlaceholderText(/Введите название репозитория/i)
+    userEvent.type(inputElement, 'a')
+
+    waitFor(() => {
+      expect(store.dispatch(getRepos())).toHaveBeenCalled()
     })
   })
 })
