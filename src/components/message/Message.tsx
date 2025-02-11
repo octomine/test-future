@@ -4,10 +4,14 @@ import { useAppSelector } from "@/store/store";
 
 export const Message: FC = () => {
   const { formatMessage } = useIntl();
+
+  const error = useAppSelector(({ repos }) => repos.error)
   const isLoading = useAppSelector(({ repos }) => repos.isLoading)
 
   let message;
-  if (isLoading) {
+  if (error) {
+    message = error;
+  } else if (isLoading) {
     message = formatMessage({ id: 'loading' })
   }
 
