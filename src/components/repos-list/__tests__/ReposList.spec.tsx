@@ -2,10 +2,10 @@ import '@testing-library/jest-dom'
 import { render, screen, waitFor } from '@testing-library/react'
 
 import { TestProvider } from '@/utils'
-import { ReposList } from '../ReposList'
 import { store } from '@/store'
 import { setName } from '@/store/slices'
 import { getRepos } from '@/store/thunks'
+import { ReposList } from '../ReposList'
 
 const renderComponent = () => render(
   <TestProvider>
