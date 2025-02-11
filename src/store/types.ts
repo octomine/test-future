@@ -18,6 +18,7 @@ export type TRepos = {
   list: TRepo[];
   isFull: boolean;
   isLoading: boolean;
+  error: string;
 };
 
 export type ThunkApiConfig = {

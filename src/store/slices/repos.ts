@@ -7,6 +7,7 @@ const initialState: TRepos = {
   list: [],
   isFull: false,
   isLoading: false,
+  error: "",
 };
 
 const repoSlice = createSlice({
@@ -24,12 +25,16 @@ const repoSlice = createSlice({
     setIsLoading: (state, { payload }: PayloadAction<boolean>) => {
       state.isLoading = payload;
     },
+    setError: (state, { payload }: PayloadAction<string>) => {
+      state.error = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(setName, (state) => {
         state.list = [];
         state.isLoading = false;
+        state.error = "";
       })
       .addCase(addPage, (state, { payload }) => {
         state.isFull = payload.length < PER_PAGE;
@@ -38,5 +43,5 @@ const repoSlice = createSlice({
   },
 });
 
-export const { setRepos, addPage, setIsLoading } = repoSlice.actions;
+export const { setRepos, addPage, setIsLoading, setError } = repoSlice.actions;
 export const repos = repoSlice.reducer;
