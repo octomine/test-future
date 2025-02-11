@@ -15,21 +15,28 @@ const repoSlice = createSlice({
   reducers: {
     setRepos: (state, { payload }: PayloadAction<TRepo[]>) => {
       state.list = payload;
+      state.isLoading = false;
     },
     addPage: (state, { payload }: PayloadAction<TRepo[]>) => {
       state.list = [...state.list, ...payload];
+      state.isLoading = false;
+    },
+    setIsLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.isLoading = payload;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(setName, (state) => {
         state.list = [];
+        state.isLoading = false;
       })
       .addCase(addPage, (state, { payload }) => {
         state.isFull = payload.length < PER_PAGE;
+        state.isLoading = false;
       });
   },
 });
 
-export const { setRepos, addPage } = repoSlice.actions;
+export const { setRepos, addPage, setIsLoading } = repoSlice.actions;
 export const repos = repoSlice.reducer;

@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { BASE_URL, PER_PAGE } from "./constants";
 import { ThunkApiConfig } from "./types";
-import { addPage, setRepos } from "./slices";
+import { addPage, setRepos, setIsLoading } from "./slices";
 
 const createAppAsyncThunk = createAsyncThunk.withTypes<ThunkApiConfig>();
 
@@ -12,6 +12,7 @@ export const getRepos = createAppAsyncThunk(
     const {
       params: { name },
     } = getState();
+    dispatch(setIsLoading(true));
 
     return fetch(`${BASE_URL}/users/${name}/repos?per_page=${PER_PAGE}&page=1`)
       .then((response) => response.json())
@@ -27,6 +28,8 @@ export const getPage = createAppAsyncThunk(
     const {
       params: { name, page },
     } = getState();
+    dispatch(setIsLoading(true));
+
     return fetch(
       `${BASE_URL}/users/${name}/repos?per_page=${PER_PAGE}&page=${page}`
     )
