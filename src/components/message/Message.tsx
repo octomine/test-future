@@ -20,7 +20,8 @@ export const Message: FC = () => {
       "absolute top-0",
       "flex justify-center items-center",
       "h-full w-full",
-      "bg-white/75"
+      "bg-white/90",
+      "text-2xl"
     ].join(' ')}>
       {message}
     </div>

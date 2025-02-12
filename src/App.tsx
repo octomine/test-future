@@ -4,7 +4,7 @@ import { Message } from "./components/message";
 
 function App() {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col mx-auto max-w-screen-md">
       <SearchInput></SearchInput>
       <div className="h-full overflow-hidden relative">
         <ReposList></ReposList>

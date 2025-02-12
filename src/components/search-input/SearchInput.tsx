@@ -16,7 +16,7 @@ export const SearchInput: FC = () => {
 
   return <input
     className={[
-      "text-3xl",
+      "text-2xl sm:text-3xl",
       "placeholder:text-slate-300",
       "px-2 py-1 m-2",
       "bg-gradient-to-b",
